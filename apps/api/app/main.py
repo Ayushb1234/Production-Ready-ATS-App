@@ -4,6 +4,7 @@ from app.models.user import User
 from app.api.routes.auth import router as auth_router
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes.scan import router as scan_router
+from app.api.routes.scan_ai import router as scan_ai_router
 
 
 
@@ -31,6 +32,8 @@ app.add_middleware(
 
 app.include_router(auth_router)
 app.include_router(scan_router)
+app.include_router(scan_ai_router)
+
 
 
 

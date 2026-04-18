@@ -73,7 +73,7 @@ export default function Dashboard() {
     if (file) formData.append("file", file);
     formData.append("jd_text", jd);
 
-    const res = await api.post("/scan/", formData, {
+    const res = await api.post("/scan-ai/", formData, {
       headers: {
         "Content-Type": "multipart/form-data"
       }
@@ -106,17 +106,24 @@ export default function Dashboard() {
         Scan Resume
       </button>
 
-      {result && (
-        <div style={{ marginTop: "30px" }}>
-          <h2>ATS Score: {result.score}%</h2>
+     {result && (
+  <div style={{ marginTop: "30px" }}>
+    <h2>ATS Score: {result.score}%</h2>
 
-          <h3>Matched Keywords</h3>
-          <p>{result.matched.join(", ")}</p>
+    <h3>Breakdown</h3>
+    <p>Required Skills: {result.breakdown?.required}%</p>
+    <p>Preferred Skills: {result.breakdown?.preferred}%</p>
+    <p>Experience: {result.breakdown?.experience}%</p>
+    <p>Education: {result.breakdown?.education}%</p>
 
-          <h3>Missing Keywords</h3>
-          <p>{result.missing.join(", ")}</p>
-        </div>
-      )}
+    <h3>Missing Skills</h3>
+    <p>
+      {result.missing_skills?.length
+        ? result.missing_skills.join(", ")
+        : "None"}
+    </p>
+  </div>
+)}
     </div>
   );
 }
