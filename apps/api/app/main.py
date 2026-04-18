@@ -3,6 +3,7 @@ from app.core.database import Base, engine
 from app.models.user import User
 from app.api.routes.auth import router as auth_router
 from fastapi.middleware.cors import CORSMiddleware
+from app.api.routes.scan import router as scan_router
 
 
 
@@ -11,6 +12,8 @@ Base.metadata.create_all(bind=engine)
 
 
 app = FastAPI(title="App is Running")
+
+
 
 origins = [
     "http://localhost:5173",
@@ -27,6 +30,8 @@ app.add_middleware(
 
 
 app.include_router(auth_router)
+app.include_router(scan_router)
+
 
 
 @app.get("/")

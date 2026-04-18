@@ -75,3 +75,7 @@ media/
 *.pem
 *.key
 *.crt
+
+uploads/
+*.pdf
+*.docx
