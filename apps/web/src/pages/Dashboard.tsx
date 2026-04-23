@@ -99,6 +99,7 @@ export default function Dashboard() {
         placeholder="Paste Job Description"
         onChange={(e) => setJd(e.target.value)}
       />
+      
 
       <br /><br />
 
@@ -118,6 +119,7 @@ export default function Dashboard() {
 
     <h3>Missing Skills</h3>
     <p>
+
       {result.missing_skills?.length
         ? result.missing_skills.join(", ")
         : "None"}

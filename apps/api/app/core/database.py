@@ -19,3 +19,11 @@ SessionLocal = sessionmaker(
 )
 
 Base = declarative_base()
+
+# FastAPI dependency
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
